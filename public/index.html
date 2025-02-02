@@ -1,38 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Budget</title>
-    <meta name="description" content="A free personal budger app">
-    <meta name="keywords" content="app free budget finance">
+    
+    <!-- This is an SEO Change -->
+    <meta name="description" content="Personal Budget is a free app to manage your finances and expenses effectively. Stay on track with alerts, charts, and insights.">
+    <meta name="keywords" content="budget app, free finance app, manage expenses, personal finance tool, budget tracker">
+    
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="main.css">
+    
+    <!-- This is an SEO Change -->
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebPage",
+      "name": "Personal Budget",
+      "description": "A free personal budget app for managing expenses effectively.",
+      "url": "http://example.com",
+      "mainEntity": {
+        "@type": "WebApplication",
+        "name": "Personal Budget App",
+        "operatingSystem": "Any",
+        "applicationCategory": "FinanceApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    }
+    </script>
 </head>
+
 <body>
 
+    <!-- This is an A11y Change -->
 <a href="#main" class="skip">Skip to content</a>
 
-    <nav>
+    <!-- This is an A11y Change -->
+    <nav role="navigation">
         <ul>
-            <li><a href="/">HomePage</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/about.html">About</a></li>
             <li><a href="/login.html">Login</a></li>
             <li><a href="https://google.com">Google</a></li>
         </ul>
     </nav>
 
-    <div class="hero">
-        <h1>Personal Budget</h1>
-        <h2>A personal-budget management app</h2>
-    </div>
+    <!-- This is a Semantic HTML Change -->
+<header class="hero">
+    <h1>Personal Budget</h1>
+    <h2>A personal-budget management app</h2>
+  </header>
+
+  <!-- This is an A11y Change -->
+    <button aria-label="Learn more about budget management" onclick="location.href='/about.html'">Learn More</button>
+
+  
 
     <main class="center" id="main">
 
-        <div class="page-area">
+        <!-- This is a Semantic HTML Change -->
+    <section class="page-area">
+        <!-- Articles remain unchanged -->
+  
+  
 
             <article>
-                <h1>Stay on track</h1>
+                 <!-- This is an SEO Change -->
+                <h3>Stay on track</h3>
                 <p>
                     Do you know where you are spending your money? If you really stop to track it down,
                     you would get surprised! Proper budget management depends on real data... and this
@@ -41,14 +81,14 @@
             </article>
     
             <article>
-                <h1>Alerts</h1>
+                <h3>Alerts</h3>
                 <p>
                     What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
                 </p>
             </article>
     
             <article>
-                <h1>Results</h1>
+                <h3>Results</h3>
                 <p>
                     People who stick to a financial plan, budgeting every expense, get out of debt faster!
                     Also, they to live happier lives... since they expend without guilt or fear... 
@@ -57,14 +97,14 @@
             </article>
     
             <article>
-                <h1>Free</h1>
+                <h3>Free</h3>
                 <p>
                     This app is free!!! And you are the only one holding your data!
                 </p>
             </article>
     
             <article>
-                <h1>Stay on track</h1>
+                <h3>Stay on track</h3>
                 <p>
                     Do you know where you are spending your money? If you really stop to track it down,
                     you would get surprised! Proper budget management depends on real data... and this
@@ -73,14 +113,14 @@
             </article>
     
             <article>
-                <h1>Alerts</h1>
+                <h3>Alerts</h3>
                 <p>
                     What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
                 </p>
             </article>
     
             <article>
-                <h1>Results</h1>
+                <h3>Results</h3>
                 <p>
                     People who stick to a financial plan, budgeting every expense, get out of debt faster!
                     Also, they to live happier lives... since they expend without guilt or fear... 
@@ -89,21 +129,28 @@
             </article>
     
             <article>
-                <h1>Chart</h1>
-                <p>
-                    <canvas id="myChart" width="400" height="400"></canvas>
+                <h2>Chart</h2>
+                <p> The pie chart represents the distribution of your budget across different categories.
+                  <canvas id="myChart" width="400" height="400" role="img" aria-label="Budget distribution pie chart showing various categories"></canvas>
+                  <!-- This is an A11y Change -->
+                  <div class="chart-description" aria-hidden="true">
+                    The pie chart represents the distribution of your budget across different categories.
+                  </div>
                 </p>
-            </article>
+              </article>
+              
 
-        </div>
+        </section>
 
     </main>
 
     <footer class="bottom">
+        <!-- This is a Semantic HTML Change -->
         <div class="center">
-            All rights reserved &copy; Fabio Nolasco
+          All rights reserved &copy; Rahul Reddy
         </div>
-    </footer>
+      </footer>
+      
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
