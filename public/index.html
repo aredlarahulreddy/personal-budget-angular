@@ -60,15 +60,11 @@
   <!-- This is an A11y Change -->
     <button aria-label="Learn more about budget management" onclick="location.href='/about.html'">Learn More</button>
 
-  
-
     <main class="center" id="main">
 
         <!-- This is a Semantic HTML Change -->
     <section class="page-area">
         <!-- Articles remain unchanged -->
-  
-  
 
             <article>
                  <!-- This is an SEO Change -->
@@ -104,12 +100,8 @@
                   <div class="chart-description" aria-hidden="true">
                     The pie chart represents the distribution of your budget across different categories.
                   </div>
-                  <article>  
-                    <p>
-                        <canvas id="myChart" width="400" height="400"></canvas>
-                    </p>
-                </article>
-                    </p>
+                  <svg width="400" height="400" id="d3Chart"></svg> 
+                </p>
               </article>
               
 
@@ -128,6 +120,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" integrity="sha512-quHCp3WbBNkwLfYUMd+KwBAgpVukJu5MncuQaWXgCrfgcxCJAq/fo+oqrRKOj+UKEmyMCG3tb8RB63W+EmrOBg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
+
     <script>        
         var dataSource = {
                 datasets: [
@@ -165,10 +158,47 @@
                     dataSource.labels[i] = res.data.myBudget[i].title;
                     createChart();
                 }
+                updateD3Chart(res.data.myBudget);
             });
         }
 
+        var svg = d3.select("svg");
+        var width = 400, height = 400, radius = Math.min(width, height) / 2;
+
+        var pie = d3.layout.pie().sort(null).value(function(d) { return d.budget; });
+        var arc = d3.svg.arc().outerRadius(radius * 0.8).innerRadius(radius * 0.4);
+        var outerArc = d3.svg.arc().innerRadius(radius * 0.9).outerRadius(radius * 0.9);
+
+        var color = d3.scale.ordinal().range([
+            '#ffcd56', '#ff6384', '#36a2eb', '#fd6b19', '#800080', '#FFA500', '#A52A2A', '#00FF00'
+        ]);
+
+        // Update D3 pie chart
+        function updateD3Chart(data) {
+            svg.selectAll("*").remove();  // Clear previous chart if any
+
+            var g = svg.append("g")
+                .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+            var path = g.selectAll(".arc")
+                .data(pie(data))
+                .enter().append("path")
+                .attr("class", "arc")
+                .attr("d", arc)
+                .style("fill", function(d) { return color(d.data.title); });
+
+            var text = g.selectAll(".label")
+                .data(pie(data))
+                .enter().append("text")
+                .attr("transform", function(d) {
+                    var midAngle = d.startAngle + (d.endAngle - d.startAngle) / 2;
+                    return "translate(" + arc.centroid(d) + ")rotate(" + (midAngle * 180 / Math.PI - 90) + ")";
+                })
+                .attr("dy", ".35em")
+                .text(function(d) { return d.data.title; });
+        }
         getBudget();
+
     </script>
       
 </body>
