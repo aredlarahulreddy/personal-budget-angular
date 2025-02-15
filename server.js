@@ -1,11 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = 3000;
-const fs = require('fs')
 
-app.use('/',express.static('public'));
+app.use(cors());
 
-/*const budget = {
+const budget = {
     myBudget: [
         {
             title: 'Eat out',
@@ -19,28 +19,13 @@ app.use('/',express.static('public'));
             title: 'Grocery',
             budget: 110
         },
-    
     ]
-};*/
+};
 
-
-
-app.get('/hello', (req, res) => {
-    res.send('Hello World');
-});
 
 app.get('/budget', (req, res) => {
-    fs.readFile('budget.json', (err, data) => {
-        if (err) {
-          res.status(500).send('Error loading data');
-          return;
-        }
-        const budgetData = JSON.parse(data);
-        res.json(budgetData);
-      });
-    //res.json(budget);
+    res.json(budget);
 });
-
 
 app.listen(port, () => {
     console.log(`API served at http://localhost:${port}`);
