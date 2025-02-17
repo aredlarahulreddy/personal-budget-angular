@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+// Budget API
+
+>>>>>>> ba5cca1 (final commit)
 const express = require('express');
 const cors = require('cors');
 const app = express();
